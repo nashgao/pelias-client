@@ -17,7 +17,30 @@ declare(strict_types=1);
 namespace Nashgao\Pelias\Parameter;
 
 
+use Nashgao\Pelias\Attribute\Focus\Focus;
+
 class Search extends AbstractParameter
 {
+    /**
+     * @var string
+     */
     public string $text;
+
+
+    /**
+     * @var Focus
+     */
+    public Focus $focus;
+
+
+    /**
+     * @return Focus
+     */
+    public function focus():Focus
+    {
+        return new Focus();
+    }
+
+
+
 }

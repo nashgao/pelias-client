@@ -5,36 +5,25 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:08
+ * @project pelias
+ * @create Created on 2020/9/21 下午8:31
  * @author Nash Gao
- * @namespace Pelias\Parameter
+ * @namespace Nashgao\Pelias\Attribute\Focus
  */
 
 declare(strict_types=1);
 
 
-namespace Nashgao\Pelias\Parameter;
+namespace Nashgao\Pelias\Attribute\Focus;
 
 
+use Nashgao\Pelias\Attribute\AbstractAttribute;
 use Nashgao\Pelias\Attribute\Point;
 
-class Reverse extends AbstractParameter
+class Focus extends AbstractAttribute
 {
     /**
      * @var Point
      */
     public Point $point;
-
-
-    /**
-     * @return Point
-     */
-    public function point():Point
-    {
-        return new Point();
-    }
-
-
-
 }

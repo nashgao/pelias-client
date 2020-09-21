@@ -5,36 +5,32 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:08
+ * @project pelias
+ * @create Created on 2020/9/21 下午8:25
  * @author Nash Gao
- * @namespace Pelias\Parameter
+ * @namespace Nashgao\Pelias\Attribute
  */
 
 declare(strict_types=1);
 
 
-namespace Nashgao\Pelias\Parameter;
+namespace Nashgao\Pelias\Attribute;
 
 
-use Nashgao\Pelias\Attribute\Point;
-
-class Reverse extends AbstractParameter
+class Circle extends AbstractAttribute
 {
     /**
-     * @var Point
+     * @var string|float
      */
-    public Point $point;
-
+    public $lat;
 
     /**
-     * @return Point
+     * @var string|float
      */
-    public function point():Point
-    {
-        return new Point();
-    }
+    public $lon;
 
-
-
+    /**
+     * @var string|float
+     */
+    public $radius;
 }

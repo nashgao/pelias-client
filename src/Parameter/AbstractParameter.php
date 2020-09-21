@@ -18,10 +18,34 @@ namespace Nashgao\Pelias\Parameter;
 
 
 use Hyperf\Utils\Str;
+use Nashgao\Pelias\Attribute\Boundary\Boundary;
+use Nashgao\Pelias\Attribute\Layers;
+use Nashgao\Pelias\Attribute\Sources;
 use Nashgao\Pelias\Exception\InvalidServiceTypeException;
 
 abstract class AbstractParameter implements ParameterInterface
 {
+    /**
+     * size of the request
+     * @var int
+     */
+    public int $size;
+
+    /**
+     * @var Sources
+     */
+    public Sources $sources;
+
+    /**
+     * @var Layers
+     */
+    public Layers $layers;
+
+    /**
+     * @var Boundary
+     */
+    public Boundary $boundary;
+
     /**
      * @param string $field
      * @param $value
@@ -67,4 +91,30 @@ abstract class AbstractParameter implements ParameterInterface
     {
         return property_exists($class, $property);
     }
+
+    /**
+     * @return Sources
+     */
+    public function sources():Sources
+    {
+        return new Sources();
+    }
+
+    /**
+     * @return Layers
+     */
+    public function layers():Layers
+    {
+        return new Layers();
+    }
+
+    /**
+     * @return Boundary
+     */
+    public function boundary():Boundary
+    {
+        return new Boundary();
+    }
+
+
 }

@@ -50,7 +50,7 @@ class ConfigProvider
                     'id' => 'pelias',
                     'description' => 'pelias configuration',
                     'source' => __DIR__ . '/../publish/pelias.php',
-                    'destination' => BASE_PATH . '/config/autoload/jwt.php',
+                    'destination' => BASE_PATH . '/config/autoload/pelias.php',
                 ],
             ],
         ];
