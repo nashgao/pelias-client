@@ -93,14 +93,12 @@ Abstract class Client
 
         $this->client = make(GuzzleClient::class, [
             'config' => [
-                'base_uri' => $this->config->get("$configEndPoint.'endpoint"),
+                'base_uri' => $this->config->get("$configEndPoint.endpoint"),
                 'handler' => $stack,
             ],
         ]);
 
-
-        setPelias(make($serviceType));
-
+        setPelias(new $serviceType);
         return $this;
     }
 
@@ -124,8 +122,19 @@ Abstract class Client
      */
     public function query():ResponseInterface
     {
+        $query = getPelias()->toArray();
+        foreach ($query as $key => &$value) {
+            if (is_object($value)) {
+                $attributes = get_object_vars($value);
+                foreach ($attributes as $attribute => $val) {
+                    $query["$key.$attribute"] = $val;
+                }
+                unset($query[$key]);
+            }
+        }
+
         return $this->client->get("/v1/" . $this->connection, [
-            'query' => getPelias()->toArray()
+            'query' => $query
         ]);
     }
 

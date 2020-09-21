@@ -17,15 +17,17 @@ declare(strict_types=1);
 namespace Nashgao\Pelias\Parameter;
 
 
+use Nashgao\Pelias\Attribute\Point;
+
 class Reverse extends AbstractParameter
 {
-    /**
-     * @var string|float $lat
-     */
-    public $lat;
+    public Point $point;
 
-    /**
-     * @var string|float $lon
-     */
-    public $lon;
+    public function point():Point
+    {
+        return new Point();
+    }
+
+
+
 }

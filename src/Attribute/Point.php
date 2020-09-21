@@ -6,19 +6,26 @@
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
  * @project pelias
- * @create Created on 2020/9/21 下午4:00
+ * @create Created on 2020/9/21 下午5:42
  * @author Nash Gao
- * @namespace Nashgao\Pelias
+ * @namespace Nashgao\Pelias\Attribute
  */
 
 declare(strict_types=1);
 
 
-namespace HyperfTest\Cases;
+namespace Nashgao\Pelias\Attribute;
 
-use PHPUnit\Framework\TestCase;
 
-abstract class AbstractTest extends TestCase
+class Point extends AbstractAttribute
 {
+    /**
+     * @var string|float
+     */
+    public $lat;
 
+    /**
+     * @var string|float
+     */
+    public $lon;
 }

@@ -32,4 +32,4 @@ Hyperf\Di\ClassLoader::init();
 
 $container = require BASE_PATH . '/config/container.php';
 
-$container->get(Hyperf\Contract\ApplicationInterface::class);
+//$container->get(Hyperf\Contract\ApplicationInterface::class);

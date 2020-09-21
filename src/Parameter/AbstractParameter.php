@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Nashgao\Pelias\Parameter;
 
 
+use Hyperf\Utils\Str;
 use Nashgao\Pelias\Exception\InvalidServiceTypeException;
 
 abstract class AbstractParameter implements ParameterInterface
@@ -28,18 +29,42 @@ abstract class AbstractParameter implements ParameterInterface
      */
     public function set(string $field, $value): self
     {
-        if (! property_exists(__CLASS__, $field)) {
+        if (Str::contains($field, '.')) {
+            $fields = explode('.', $field);
+            if (! $this->propertyExists(static::class, $fields[0])) {
+                throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__ );
+            } else {
+                // if the attribute is not set, then create a new value
+                if (! isset($this->{$fields[0]})) {
+                    $this->{$fields[0]} = $this->{$fields[0]}();
+                }
+
+                $this->{$fields[0]}->{$fields[1]} = $value;
+                return $this;
+            }
+        } else if (! $this->propertyExists(static::class, $field)) {
             throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__ );
+        } else {
+            $this->$field = $value;
+            return $this;
         }
-        $this->$field = $value;
-        return $this;
     }
 
     /**
-     *
+     * @return array
      */
     public function toArray():array
     {
-        // TODO: Implement toArray() method.
+        return get_object_vars($this);
+    }
+
+    /**
+     * @param string $class
+     * @param $property
+     * @return bool
+     */
+    protected function propertyExists(string $class, $property):bool
+    {
+        return property_exists($class, $property);
     }
 }

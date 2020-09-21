@@ -35,7 +35,7 @@ class ClientFactory
         /** @var ConfigInterface $config */
         $config = $container->get(ConfigInterface::class);
 
-        if (! array_key_exists($serviceType, $config->get('pelias.api'))) {
+        if (! array_key_exists($serviceType, $config->get('dependencies'))) {
             throw new InvalidServiceTypeException('invalid service type');
         }
 
