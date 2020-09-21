@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 
 use Hyperf\Utils\Context;
-use Pelias\Parameter\ParameterInterface;
+use Nashgao\Pelias\Parameter\ParameterInterface;
 
 
 if (! function_exists('getPelias')) {

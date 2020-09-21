@@ -5,23 +5,20 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:09
+ * @project pelias
+ * @create Created on 2020/9/21 下午4:00
  * @author Nash Gao
- * @namespace ${NAMESPACE}
+ * @namespace Nashgao\Pelias
  */
 
 declare(strict_types=1);
 
 
-namespace Nashgao\Pelias\PeliasClient;
+namespace HyperfTest\Cases;
 
+use PHPUnit\Framework\TestCase;
 
-use Nashgao\Pelias\Client;
-
-class AutoCompleteClient extends Client
+class AbstractTest extends TestCase
 {
-    protected string $connection = 'autocomplete';
-
 
 }

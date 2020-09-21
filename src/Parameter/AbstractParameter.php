@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace Nashgao\Pelias\Parameter;
 
 
-use Pelias\Exception\InvalidServiceTypeException;
+use Nashgao\Pelias\Exception\InvalidServiceTypeException;
 
 abstract class AbstractParameter implements ParameterInterface
 {

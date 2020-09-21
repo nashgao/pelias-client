@@ -5,22 +5,26 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:53
+ * @project pelias
+ * @create Created on 2020/9/21 下午4:04
  * @author Nash Gao
- * @namespace ${NAMESPACE}
+ * @namespace HyperfTest\Cases
  */
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
-// an example of forward search
+
+namespace HyperfTest\Cases;
+
 
 use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\Search;
 
-$factory = new ClientFactory();
-var_dump($factory);
-
-//$result = ClientFactory::create(Search::class)->where('text', 'brisbane')->query()->getBody()->getContents();
-//var_dump($result);
+class SearchTest extends AbstractTest
+{
+    public function testSearch()
+    {
+        $searchResult = ClientFactory::create(Search::class)->where('text', 'brisbane');
+        var_dump($searchResult);
+    }
+}

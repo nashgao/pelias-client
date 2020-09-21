@@ -4,6 +4,8 @@
     "type": "library",
     "license": "MIT",
     "keywords": [
+        "php",
+        "hyperf",
         "pelias",
         "guzzle",
         "geolocation"
@@ -21,9 +23,14 @@
         "hyperf/di": "~2.0.0",
         "hyperf/config": "~2.0.0"
     },
+    "require-dev": {
+        "hyperf/testing": "~2.0.0",
+        "friendsofphp/php-cs-fixer": "^2.9"
+
+    },
     "autoload": {
         "psr-4": {
-            "Nashgao\\Pelias\\": "/src"
+            "Nashgao\\Pelias\\": "src"
         },
         "files": [
             "src/Helper/function.php"
@@ -31,7 +38,20 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Nashgao\\Pelias\\": "/test"
+            "HyperfTest\\": "tests"
         }
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Nashgao\\Pelias\\ConfigProvider"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/co-phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "license-check": "docheader check src/ tests/",
+        "cs-fix": "php-cs-fixer fix $1",
+        "json-fix": "./bin/composer-json-fixer",
+        "analyse": "phpstan analyse --memory-limit 4096M -l 5 -c phpstan.neon"
     }
 }

@@ -5,23 +5,15 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:09
+ * @project pelias
+ * @create Created on 2020/9/21 下午3:27
  * @author Nash Gao
  * @namespace ${NAMESPACE}
  */
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/vendor/autoload.php';
 
-namespace Nashgao\Pelias\PeliasClient;
-
-
-use Nashgao\Pelias\Client;
-
-class AutoCompleteClient extends Client
-{
-    protected string $connection = 'autocomplete';
-
-
-}
+$class = new \Nashgao\Pelias\ClientFactory();
+var_dump($class);
