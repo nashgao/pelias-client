@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias;
 
-
 use Hyperf\Contract\ConfigInterface;
 use Hyperf\Utils\ApplicationContext;
 use Nashgao\Pelias\Exception\InvalidServiceTypeException;

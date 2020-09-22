@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\Parameter;
 
-
 interface ParameterInterface
 {
     public function set(string $field, $value);

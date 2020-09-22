@@ -16,10 +16,10 @@ declare(strict_types=1);
 
 namespace HyperfTest\Cases;
 
-
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\Reverse;
+use Psr\Http\Message\ResponseInterface;
 use Swoole\Coroutine\Channel;
 
 class ReverseTest extends AbstractTest

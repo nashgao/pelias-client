@@ -16,8 +16,7 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\Attribute;
 
-
-class Circle extends AbstractAttribute
+class Circle extends AbstractAttribute implements NestedInterface
 {
     /**
      * @var string|float

@@ -4,3 +4,4 @@ vendor/
 *.lock
 .phpunit*
 config
+.php_cs.cache

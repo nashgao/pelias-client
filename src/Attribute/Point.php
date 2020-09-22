@@ -16,8 +16,7 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\Attribute;
 
-
-class Point extends AbstractAttribute
+class Point extends AbstractAttribute implements NestedInterface
 {
     /**
      * @var string|float

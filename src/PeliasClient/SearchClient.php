@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\PeliasClient;
 
-
 use Nashgao\Pelias\Client;
 
 class SearchClient extends Client

@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias;
 
-
 use Nashgao\Pelias\Parameter\AutoComplete;
 use Nashgao\Pelias\Parameter\Reverse;
 use Nashgao\Pelias\Parameter\Search;
@@ -37,7 +36,6 @@ class ConfigProvider
             'commands' => [
             ],
             'listeners' => [],
-            // 合并到  config/autoload/annotations.php 文件
             'annotations' => [
                 'scan' => [
                     'paths' => [

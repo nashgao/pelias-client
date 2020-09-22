@@ -26,7 +26,6 @@
     },
     "require-dev": {
         "hyperf/testing": "~2.0.0",
-        "friendsofphp/php-cs-fixer": "^2.9",
         "swoole/ide-helper": "~4.5"
 
     },

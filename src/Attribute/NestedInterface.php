@@ -5,22 +5,19 @@
  * Proprietary and confidential
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
- * @project composer
- * @create Created on 2020/9/20 下午5:11
+ * @project pelias
+ * @create Created on 2020/9/22 下午12:02
  * @author Nash Gao
- * @namespace Pelias\PeliasClient
+ * @namespace Nashgao\Pelias\Attribute
  */
 
 declare(strict_types=1);
 
 
-namespace Nashgao\Pelias\PeliasClient;
+namespace Nashgao\Pelias\Attribute;
 
-use Nashgao\Pelias\Client;
 
-class ReverseClient extends Client
+interface NestedInterface
 {
-    protected string $connection = 'reverse';
-
 
 }

@@ -6,14 +6,18 @@
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
  * @project pelias
- * @create Created on 2020/9/21 下午3:27
+ * @create Created on 2020/9/22 下午12:01
  * @author Nash Gao
- * @namespace ${NAMESPACE}
+ * @namespace Nashgao\Pelias\Attribute
  */
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/vendor/autoload.php';
+
+namespace Nashgao\Pelias\Attribute;
 
 
+interface ArrayLikeInterface
+{
 
+}

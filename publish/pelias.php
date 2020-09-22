@@ -29,7 +29,7 @@ return [
             'delay' => 10
         ],
         'autocomplete' => [
-            'endpoint' => '',
+            'endpoint' => '0.0.0.0:4000',
             'max_connection' => 10,
             'retry' => 1,
             'delay' => 10

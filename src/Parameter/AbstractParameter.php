@@ -16,7 +16,6 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\Parameter;
 
-
 use Hyperf\Utils\Str;
 use Nashgao\Pelias\Attribute\Boundary\Boundary;
 use Nashgao\Pelias\Attribute\Layers;
@@ -53,25 +52,48 @@ abstract class AbstractParameter implements ParameterInterface
      */
     public function set(string $field, $value): self
     {
+        // if it is an nested object
         if (Str::contains($field, '.')) {
             $fields = explode('.', $field);
             if (! $this->propertyExists(static::class, $fields[0])) {
-                throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__ );
+                throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__);
             } else {
                 // if the attribute is not set, then create a new value
                 if (! isset($this->{$fields[0]})) {
                     $this->{$fields[0]} = $this->{$fields[0]}();
                 }
+                
+                if (count($fields) === 2) {
+                    $this->{$fields[0]}->{$fields[1]} = $value;
+                } else {
 
-                $this->{$fields[0]}->{$fields[1]} = $value;
+                    if (! isset($this->{$fields[0]}->{$fields[1]})) {
+                        $this->{$fields[0]}->{$fields[1]} = $this->{$fields[0]}->{$fields[1]}();
+                    }
+                    $this->{$fields[0]}->{$fields[1]}->{$fields[2]} = $value;
+                }
                 return $this;
             }
-        } else if (! $this->propertyExists(static::class, $field)) {
-            throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__ );
-        } else {
-            $this->$field = $value;
-            return $this;
         }
+
+        if (! $this->propertyExists(static::class, $field)) {
+            throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__);
+        }
+
+        // if it is not an nested object, check if it's array like
+        if (method_exists($this, $field)) {
+            // the the field does not exists, then create one and assign value
+            if (! isset($this->$field)) {
+                $this->$field = $this->{$field}();
+            }
+            $this->$field->$value = true;
+        } else {
+            // normal field like test
+            $this->$field = $value;
+
+        }
+        return $this;
+
     }
 
     /**
@@ -115,6 +137,4 @@ abstract class AbstractParameter implements ParameterInterface
     {
         return new Boundary();
     }
-
-
 }

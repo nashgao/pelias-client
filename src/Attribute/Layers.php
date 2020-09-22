@@ -16,8 +16,7 @@ declare(strict_types=1);
 
 namespace Nashgao\Pelias\Attribute;
 
-
-class Layers extends AbstractAttribute
+class Layers extends AbstractAttribute implements ArrayLikeInterface
 {
     public bool $venue;
 

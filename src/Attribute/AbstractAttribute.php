@@ -17,20 +17,7 @@ declare(strict_types=1);
 namespace Nashgao\Pelias\Attribute;
 
 
-use Nashgao\Pelias\Exception\InvalidArgumentException;
-
 class AbstractAttribute implements AttributeInterface
 {
-    public function __invoke(string $field, $value)
-    {
-        if (! property_exists(static::class, $field)) {
-            throw new InvalidArgumentException();
-        }
-
-        $this->$field = $value;
-    }
-
-
-
 
 }

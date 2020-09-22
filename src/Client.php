@@ -21,6 +21,8 @@ use Hyperf\Contract\ConfigInterface;
 use Hyperf\Guzzle\PoolHandler;
 use Hyperf\Guzzle\RetryMiddleware;
 use Hyperf\Utils\Coroutine;
+use Nashgao\Pelias\Attribute\ArrayLikeInterface;
+use Nashgao\Pelias\Attribute\NestedInterface;
 use Nashgao\Pelias\Parameter\ParameterInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -40,7 +42,7 @@ use GuzzleHttp\Promise;
  * @method Promise\PromiseInterface patchAsync(string|UriInterface $uri, array $options = [])
  * @method Promise\PromiseInterface deleteAsync(string|UriInterface $uri, array $options = [])
  */
-Abstract class Client
+abstract class Client
 {
     /**
      * @var GuzzleClient
@@ -84,11 +86,13 @@ Abstract class Client
 
         // default retry
         $stack = HandlerStack::create($handler ?? null);
-        $stack->push(make(RetryMiddleware::class,
+        $stack->push(make(
+            RetryMiddleware::class,
             [
                 'retries' => $this->config->get("$configEndPoint.retry"),
                 'delay' => $this->config->get("$configEndPoint.delay")
-            ])->getMiddleware(), 'retry');
+            ]
+        )->getMiddleware(), 'retry');
 
 
         $this->client = make(GuzzleClient::class, [
@@ -112,7 +116,7 @@ Abstract class Client
     {
         /** @var ParameterInterface $parameter */
         $parameter = getPelias();
-        setPelias($parameter->set($field,$value));
+        setPelias($parameter->set($field, $value));
         return $this;
     }
 
@@ -123,20 +127,36 @@ Abstract class Client
     public function query():ResponseInterface
     {
         $query = getPelias()->toArray();
+
         foreach ($query as $key => &$value) {
-            if (is_object($value)) {
+            if ($value instanceof NestedInterface) {
                 $attributes = get_object_vars($value);
                 foreach ($attributes as $attribute => $val) {
                     $query["$key.$attribute"] = $val;
                 }
                 unset($query[$key]);
             }
+
+            if ($value instanceof ArrayLikeInterface) {
+                    $query[$key] = (function () use ($value) {
+                        foreach ($value as $sourceName => $sourceValue) {
+                            if ($sourceValue) {
+                                if (! isset($soureQuery)) {
+                                $sourceQuery = $sourceName;
+                                } else {
+                                    $sourceQuery = ",$sourceName";
+
+                                }
+                            }
+                        }
+                        return $sourceQuery;
+                    })();
+                }
         }
 
-        return $this->client->get("/v1/" . $this->connection, [
+        $result =  $this->client->get("/v1/" . $this->connection, [
             'query' => $query
         ]);
+        return $result;
     }
-
-
 }
