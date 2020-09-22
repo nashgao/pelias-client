@@ -5,3 +5,4 @@ vendor/
 .phpunit*
 config
 .php_cs.cache
+runtime
