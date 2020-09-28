@@ -6,7 +6,7 @@
  * Written by Nash Gao <nash@spaceplaform.co>
  * @organization Space Platform
  * @project pelias
- * @create Created on 2020/9/21 下午5:06
+ * @create Created on 2020/9/28 下午1:59
  * @author Nash Gao
  * @namespace HyperfTest\Cases
  */
@@ -16,20 +16,20 @@ declare(strict_types=1);
 
 namespace HyperfTest\Cases;
 
+
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
-use Nashgao\Pelias\Parameter\Reverse;
+use Nashgao\Pelias\Parameter\Place;
 use Swoole\Coroutine\Channel;
 
-class ReverseTest extends AbstractTest
+class PlaceTest extends AbstractTest
 {
-    public function testReverse()
+    public function testPlace()
     {
         $channel = new Channel(1);
         Coroutine::create(function () use ($channel) {
-            $searchResult = ClientFactory::create(Reverse::class)
-                ->where('point.lat', '-27.42')
-                ->where('point.lon', '153')
+            $searchResult = ClientFactory::create(Place::class)
+                ->where('text', 'bris')
                 ->query();
             $channel->push($searchResult);
         });

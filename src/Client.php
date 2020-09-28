@@ -149,14 +149,13 @@ abstract class Client
                                 }
                             }
                         }
-                        return $sourceQuery;
+                        return $sourceQuery ?? '';
                     })();
                 }
         }
 
-        $result =  $this->client->get("/v1/" . $this->connection, [
+        return $this->client->get("/v1/" . $this->connection, [
             'query' => $query
         ]);
-        return $result;
     }
 }
