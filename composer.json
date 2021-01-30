@@ -18,14 +18,14 @@
     ],
     "require": {
         "php": ">=7.4",
-        "ext-swoole": "4.5.*    ",
-        "hyperf/guzzle": "~2.0.0",
-        "hyperf/di": "~2.0.0",
-        "hyperf/config": "~2.0.0",
-        "hyperf/pool": "~2.0.0"
+        "ext-swoole": "4.5.*",
+        "hyperf/guzzle": "v2.1.0",
+        "hyperf/di": "v2.1.0",
+        "hyperf/config": "v2.1.0",
+        "hyperf/pool": "v2.1.0"
     },
     "require-dev": {
-        "hyperf/testing": "~2.0.0",
+        "hyperf/testing": "v2.1.0",
         "swoole/ide-helper": "~4.5",
         "phpstan/phpstan": "^0.12"
     },
