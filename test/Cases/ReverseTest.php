@@ -8,13 +8,13 @@
  * @project pelias
  * @create Created on 2020/9/21 下午5:06
  * @author Nash Gao
- * @namespace HyperfTest\Cases
+ * @namespace Nashgao\Test\Cases
  */
 
 declare(strict_types=1);
 
 
-namespace HyperfTest\Cases;
+namespace Nashgao\Test\Cases;
 
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;

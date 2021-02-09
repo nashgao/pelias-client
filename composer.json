@@ -39,7 +39,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "HyperfTest\\": "tests"
+            "Nashgao\\Test\\": "test"
         }
     },
     "extra": {

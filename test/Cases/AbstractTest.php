@@ -14,7 +14,7 @@
 declare(strict_types=1);
 
 
-namespace HyperfTest\Cases;
+namespace Nashgao\Test\Cases;
 
 use PHPUnit\Framework\TestCase;
 

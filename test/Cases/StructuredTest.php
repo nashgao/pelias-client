@@ -8,28 +8,29 @@
  * @project pelias
  * @create Created on 2020/9/28 下午1:59
  * @author Nash Gao
- * @namespace HyperfTest\Cases
+ * @namespace Nashgao\Test\Cases
  */
 
 declare(strict_types=1);
 
 
-namespace HyperfTest\Cases;
+namespace Nashgao\Test\Cases;
 
 
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
-use Nashgao\Pelias\Parameter\Place;
+use Nashgao\Pelias\Parameter\Structured;
 use Swoole\Coroutine\Channel;
 
-class PlaceTest extends AbstractTest
+class StructuredTest extends AbstractTest
 {
-    public function testPlace()
+    public function testStructure()
     {
         $channel = new Channel(1);
         Coroutine::create(function () use ($channel) {
-            $searchResult = ClientFactory::create(Place::class)
-                ->where('text', 'bris')
+            $searchResult = ClientFactory::create(Structured::class)
+                ->where('country', 'australia')
+                ->where('region', 'brisbane')
                 ->query();
             $channel->push($searchResult);
         });

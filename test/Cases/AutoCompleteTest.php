@@ -8,13 +8,13 @@
  * @project pelias
  * @create Created on 2020/9/22 下午12:08
  * @author Nash Gao
- * @namespace HyperfTest\Cases
+ * @namespace Nashgao\Test\Cases
  */
 
 declare(strict_types=1);
 
 
-namespace HyperfTest\Cases;
+namespace Nashgao\Test\Cases;
 
 
 use Hyperf\Utils\Coroutine;
