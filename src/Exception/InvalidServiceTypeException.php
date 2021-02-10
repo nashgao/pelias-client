@@ -18,5 +18,4 @@ namespace Nashgao\Pelias\Exception;
 
 class InvalidServiceTypeException extends \RuntimeException
 {
-
 }

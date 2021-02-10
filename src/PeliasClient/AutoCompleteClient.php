@@ -21,6 +21,4 @@ use Nashgao\Pelias\Client;
 class AutoCompleteClient extends Client
 {
     protected string $connection = 'autocomplete';
-
-
 }

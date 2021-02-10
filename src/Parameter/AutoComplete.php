@@ -38,6 +38,4 @@ class AutoComplete extends AbstractParameter
     {
         return new Focus();
     }
-
-
 }

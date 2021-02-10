@@ -21,6 +21,4 @@ use Nashgao\Pelias\Client;
 class ReverseClient extends Client
 {
     protected string $connection = 'reverse';
-
-
 }

@@ -33,7 +33,4 @@ class Reverse extends AbstractParameter
     {
         return new Point();
     }
-
-
-
 }

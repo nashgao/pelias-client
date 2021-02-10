@@ -66,7 +66,6 @@ abstract class AbstractParameter implements ParameterInterface
                 if (count($fields) === 2) {
                     $this->{$fields[0]}->{$fields[1]} = $value;
                 } else {
-
                     if (! isset($this->{$fields[0]}->{$fields[1]})) {
                         $this->{$fields[0]}->{$fields[1]} = $this->{$fields[0]}->{$fields[1]}();
                     }
@@ -90,10 +89,8 @@ abstract class AbstractParameter implements ParameterInterface
         } else {
             // normal field like test
             $this->$field = $value;
-
         }
         return $this;
-
     }
 
     /**

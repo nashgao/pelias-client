@@ -38,7 +38,4 @@ class Search extends AbstractParameter
     {
         return new Focus();
     }
-
-
-
 }

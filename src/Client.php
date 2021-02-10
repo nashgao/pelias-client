@@ -138,20 +138,19 @@ abstract class Client
             }
 
             if ($value instanceof ArrayLikeInterface) {
-                    $query[$key] = (function () use ($value) {
-                        foreach ($value as $sourceName => $sourceValue) {
-                            if ($sourceValue) {
-                                if (! isset($soureQuery)) {
+                $query[$key] = (function () use ($value) {
+                    foreach ($value as $sourceName => $sourceValue) {
+                        if ($sourceValue) {
+                            if (! isset($soureQuery)) {
                                 $sourceQuery = $sourceName;
-                                } else {
-                                    $sourceQuery = ",$sourceName";
-
-                                }
+                            } else {
+                                $sourceQuery = ",$sourceName";
                             }
                         }
-                        return $sourceQuery ?? '';
-                    })();
-                }
+                    }
+                    return $sourceQuery ?? '';
+                })();
+            }
         }
 
         return $this->client->get("/v1/" . $this->connection, [

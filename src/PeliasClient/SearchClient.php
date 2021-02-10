@@ -21,6 +21,4 @@ use Nashgao\Pelias\Client;
 class SearchClient extends Client
 {
     protected string $connection = 'search';
-
-
 }

@@ -18,26 +18,25 @@ declare(strict_types=1);
 use Hyperf\Utils\Context;
 use Nashgao\Pelias\Parameter\ParameterInterface;
 
-
 if (! function_exists('getPelias')) {
     /**
      * @return ParameterInterface
      */
-    function getPelias ()
+    function getPelias()
     {
         return Context::get('pelias');
     }
 }
 
-/** 
- *  
+/**
+ *
  */
 if (! function_exists('setPelias')) {
     /**
      * @param ParameterInterface $parameter
      * @return mixed
      */
-    function setPelias (ParameterInterface $parameter)
+    function setPelias(ParameterInterface $parameter)
     {
         // check if it's been set before, if so then destroy the previous one
         return Context::has('pelias') ?
