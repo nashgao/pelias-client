@@ -18,14 +18,13 @@
     ],
     "require": {
         "php": ">=7.4",
-        "ext-swoole": "4.5.*",
         "hyperf/guzzle": "v2.1.0",
         "hyperf/di": "v2.1.0",
         "hyperf/config": "v2.1.0",
         "hyperf/pool": "v2.1.0"
     },
     "require-dev": {
-        "swoole/ide-helper": ">=4.6.1",
+        "swoole/ide-helper": "~4.6.0",
         "hyperf/testing": "v2.1.0",
         "friendsofphp/php-cs-fixer": "^2.14",
         "mockery/mockery": "^1.0",
