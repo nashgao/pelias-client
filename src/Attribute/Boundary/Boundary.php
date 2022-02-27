@@ -1,8 +1,6 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Nashgao\Pelias\Attribute\Boundary;
 
@@ -12,52 +10,31 @@ use Nashgao\Pelias\Attribute\Point;
 
 class Boundary extends AbstractAttribute implements NestedInterface
 {
-    /**
-     * @var string
-     */
+    public Circle $circle;
+
     public string $country;
 
     /**
-     * @var Point
-     */
-    public Point $point;
-
-    /**
-     * @var Rect
-     */
-    public Rect $rect;
-
-    /**
-     * @var Circle
-     */
-    public Circle $circle;
-
-    /**
-     * @var string|float
+     * @var float|string
      */
     public $gid;
 
-    /**
-     * @return Point
-     */
-    public function point():Point
+    public Point $point;
+
+    public Rect $rect;
+
+    public function Circle(): Circle
+    {
+        return new Circle();
+    }
+
+    public function point(): Point
     {
         return new Point();
     }
 
-    /**
-     * @return Rect
-     */
-    public function Rect():Rect
+    public function Rect(): Rect
     {
         return new Rect();
-    }
-
-    /**
-     * @return Circle
-     */
-    public function Circle():Circle
-    {
-        return new Circle();
     }
 }

@@ -1,17 +1,18 @@
 <?php
 
-
 declare(strict_types=1);
 
-
 namespace Nashgao\Test\Cases;
-
 
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\Structured;
 use Swoole\Coroutine\Channel;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class StructuredTest extends AbstractTest
 {
     public function testStructure()

@@ -1,8 +1,6 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Nashgao\Test\Cases;
 
@@ -11,6 +9,10 @@ use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\Reverse;
 use Swoole\Coroutine\Channel;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ReverseTest extends AbstractTest
 {
     public function testReverse()

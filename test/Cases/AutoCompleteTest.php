@@ -1,17 +1,18 @@
 <?php
 
-
 declare(strict_types=1);
 
-
 namespace Nashgao\Test\Cases;
-
 
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\AutoComplete;
 use Swoole\Coroutine\Channel;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class AutoCompleteTest extends AbstractTest
 {
     public function testAutoComplete()

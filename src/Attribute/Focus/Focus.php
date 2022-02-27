@@ -1,8 +1,6 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Nashgao\Pelias\Attribute\Focus;
 
@@ -12,13 +10,9 @@ use Nashgao\Pelias\Attribute\Point;
 
 class Focus extends AbstractAttribute implements NestedInterface
 {
-    /**
-     * @var Point
-     */
     public Point $point;
 
-
-    public function point():Point
+    public function point(): Point
     {
         return new Point();
     }

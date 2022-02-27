@@ -1,17 +1,18 @@
 <?php
 
-
 declare(strict_types=1);
 
-
 namespace Nashgao\Test\Cases;
-
 
 use Hyperf\Utils\Coroutine;
 use Nashgao\Pelias\ClientFactory;
 use Nashgao\Pelias\Parameter\Place;
 use Swoole\Coroutine\Channel;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class PlaceTest extends AbstractTest
 {
     public function testPlace()

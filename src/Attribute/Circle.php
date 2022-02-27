@@ -1,25 +1,23 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Nashgao\Pelias\Attribute;
 
 class Circle extends AbstractAttribute implements NestedInterface
 {
     /**
-     * @var string|float
+     * @var float|string
      */
     public $lat;
 
     /**
-     * @var string|float
+     * @var float|string
      */
     public $lon;
 
     /**
-     * @var string|float
+     * @var float|string
      */
     public $radius;
 }

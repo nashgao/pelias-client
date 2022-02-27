@@ -1,8 +1,6 @@
 <?php
 
-
 declare(strict_types=1);
-
 
 namespace Nashgao\Pelias;
 
@@ -15,13 +13,13 @@ use Nashgao\Pelias\PeliasClient\SearchClient;
 
 class ConfigProvider
 {
-    public function __invoke():array
+    public function __invoke(): array
     {
         return [
             'dependencies' => [
                 Search::class => SearchClient::class,
                 Reverse::class => ReverseClient::class,
-                AutoComplete::class => AutoCompleteClient::class
+                AutoComplete::class => AutoCompleteClient::class,
             ],
             'commands' => [
             ],

@@ -3,16 +3,14 @@
  * Copyright (C) SPACE Platform PTY LTD - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
- * Written by Nash Gao <nash@spaceplaform.co>
+ * Written by Nash Gao <nash@spaceplaform.co>.
  * @organization Space Platform
  * @project composer
  * @create Created on 2020/9/21 下午12:00
- * @author Nash Gao
  * @namespace Pelias\Parameter
  */
 
 declare(strict_types=1);
-
 
 namespace Nashgao\Pelias\Parameter;
 
@@ -24,31 +22,29 @@ use Nashgao\Pelias\Exception\InvalidServiceTypeException;
 
 abstract class AbstractParameter implements ParameterInterface
 {
-    /**
-     * size of the request
-     * @var int
-     */
-    public int $size;
+    public Boundary $boundary;
 
-    /**
-     * @var Sources
-     */
-    public Sources $sources;
-
-    /**
-     * @var Layers
-     */
     public Layers $layers;
 
     /**
-     * @var Boundary
+     * size of the request.
      */
-    public Boundary $boundary;
+    public int $size;
+
+    public Sources $sources;
+
+    public function boundary(): Boundary
+    {
+        return new Boundary();
+    }
+
+    public function layers(): Layers
+    {
+        return new Layers();
+    }
 
     /**
-     * @param string $field
      * @param $value
-     * @return self
      */
     public function set(string $field, $value): self
     {
@@ -56,82 +52,57 @@ abstract class AbstractParameter implements ParameterInterface
         if (Str::contains($field, '.')) {
             $fields = explode('.', $field);
             if (! $this->propertyExists(static::class, $fields[0])) {
-                throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__);
-            } else {
-                // if the attribute is not set, then create a new value
-                if (! isset($this->{$fields[0]})) {
-                    $this->{$fields[0]} = $this->{$fields[0]}();
-                }
-                
-                if (count($fields) === 2) {
-                    $this->{$fields[0]}->{$fields[1]} = $value;
-                } else {
-                    if (! isset($this->{$fields[0]}->{$fields[1]})) {
-                        $this->{$fields[0]}->{$fields[1]} = $this->{$fields[0]}->{$fields[1]}();
-                    }
-                    $this->{$fields[0]}->{$fields[1]}->{$fields[2]} = $value;
-                }
-                return $this;
+                throw new InvalidServiceTypeException("property {$field} does not exist in the class " . __CLASS__);
             }
+            // if the attribute is not set, then create a new value
+            if (! isset($this->{$fields[0]})) {
+                $this->{$fields[0]} = $this->{$fields[0]}();
+            }
+
+            if (count($fields) === 2) {
+                $this->{$fields[0]}->{$fields[1]} = $value;
+            } else {
+                if (! isset($this->{$fields[0]}->{$fields[1]})) {
+                    $this->{$fields[0]}->{$fields[1]} = $this->{$fields[0]}->{$fields[1]}();
+                }
+                $this->{$fields[0]}->{$fields[1]}->{$fields[2]} = $value;
+            }
+            return $this;
         }
 
         if (! $this->propertyExists(static::class, $field)) {
-            throw new InvalidServiceTypeException("property $field does not exist in the class " . __CLASS__);
+            throw new InvalidServiceTypeException("property {$field} does not exist in the class " . __CLASS__);
         }
 
         // if it is not an nested object, check if it's array like
         if (method_exists($this, $field)) {
             // the the field does not exists, then create one and assign value
-            if (! isset($this->$field)) {
-                $this->$field = $this->{$field}();
+            if (! isset($this->{$field})) {
+                $this->{$field} = $this->{$field}();
             }
-            $this->$field->$value = true;
+            $this->{$field}->{$value} = true;
         } else {
             // normal field like test
-            $this->$field = $value;
+            $this->{$field} = $value;
         }
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray():array
+    public function sources(): Sources
+    {
+        return new Sources();
+    }
+
+    public function toArray(): array
     {
         return get_object_vars($this);
     }
 
     /**
-     * @param string $class
      * @param $property
-     * @return bool
      */
-    protected function propertyExists(string $class, $property):bool
+    protected function propertyExists(string $class, $property): bool
     {
         return property_exists($class, $property);
-    }
-
-    /**
-     * @return Sources
-     */
-    public function sources():Sources
-    {
-        return new Sources();
-    }
-
-    /**
-     * @return Layers
-     */
-    public function layers():Layers
-    {
-        return new Layers();
-    }
-
-    /**
-     * @return Boundary
-     */
-    public function boundary():Boundary
-    {
-        return new Boundary();
     }
 }
